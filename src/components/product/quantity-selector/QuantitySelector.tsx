@@ -5,29 +5,29 @@ import clsx from "clsx";
 
 interface Props {
     quantity: number ;
+    onQuantityChange: ( quantity: number) => void
 }
 
-export const QuantitySelector = ( { quantity}: Props) => {
+export const QuantitySelector = ( { quantity, onQuantityChange}: Props) => {
 
-    const [count, setCount] = useState( quantity);
-    const onQuantityChange = ( value: number) =>{
+    const onValueChange = ( value: number) =>{
         if (value < 0) return;
-        setCount(value)
+        onQuantityChange(value)
     }
   return (
     <div className="flex">
-        <button onClick={ ()=> { onQuantityChange(count - 1)}} >
+        <button onClick={ ()=> { onValueChange(quantity - 1)}} >
             <IoRemoveCircleOutline size={30} className={
             clsx(
-                { "stroke-slate-400": count === 0 }, 
+                { "stroke-slate-400": quantity === 0 }, 
             )
         } />
         </button>
         <span className="w-20 mx-3 px-5 bg-gray-100 text-center rounded-md">
-            { count}
+            { quantity}
         </span>
         <button>
-            <IoAddCircleOutline size={"30"} onClick={ ()=> { onQuantityChange(count + 1)}} />
+            <IoAddCircleOutline size={"30"} onClick={ ()=> { onValueChange(quantity + 1)}} />
         </button>
     </div>
   )

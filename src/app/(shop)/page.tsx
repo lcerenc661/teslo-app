@@ -1,3 +1,6 @@
+
+export const revalidate = 60; // 60 seconds
+
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { redirect } from "next/navigation";
@@ -15,7 +18,7 @@ interface Props {
 export default async function ShopPage({ searchParams }: Props) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
-  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({ page });
+  const { products,  totalPages } = await getPaginatedProductsWithImages({ page });
   // console.log(currentPage, totalPages);
 
   if (products.length === 0) {

@@ -1,3 +1,5 @@
+import { Stringifier } from "postcss";
+
 export interface Product {
     id: string
     description: string;
@@ -10,6 +12,17 @@ export interface Product {
     title: string;
     //todo: type: Type;
     gender: Category;
+}
+
+export interface CartProduct {
+    id: string;
+    slug: string; 
+    title: string;
+    price: number; 
+    quantity: number; 
+    size: Size;
+    image: String;
+
 }
 
 export type Category = 'men'|'women'|'kid'|'unisex';

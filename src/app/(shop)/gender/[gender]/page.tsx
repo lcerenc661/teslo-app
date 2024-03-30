@@ -1,27 +1,34 @@
-import { ProductGrid, Title } from "@/components";
-import { Category } from "@/interfaces";
+export const revalidate = 60; // 60 seconds
+
+import { getPaginatedProductsWithImages } from "@/actions";
+import { Pagination, ProductGrid, Title } from "@/components";
 import { initialData } from "@/seed/seed";
-import { notFound } from "next/navigation";
+import { Gender } from "@prisma/client";
+import { notFound, redirect } from "next/navigation";
 
 interface Props {
-  params: { gender: Category };
+  params: { gender: string },
+  searchParams: {
+    page?: string;
+  }
 }
-export default function Category({ params }: Props) {
+export default async function Category({ params, searchParams }: Props) {
   const { gender } = params;
-  console.log(gender)
+  
+  const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
-  const products = initialData.products.filter(
-    (product) => product.gender === params.gender
-  );
+  const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({ page, gender: gender as Gender });
 
-  // if ( id ==="kids") {
-  //   notFound();
-  // }
+  if (products.length === 0) {
+    redirect(`/gender/${gender}`);
+  }
+
 
   return (
     <div>
       <Title title={`${gender}`} subtitle="All Products" className="mb-2 capitalize" />
-      {/* <ProductGrid products={products} /> */}
+      <ProductGrid products={products} />
+      <Pagination totalPages={totalPages} />
     </div>
   );
 }
