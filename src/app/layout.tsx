@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { inter } from "@/config/fonts";
-
+import { Provider } from "@/components";
 
 export const metadata: Metadata = {
-  title:{
-    template: '%s - Teslo | shop',
-    default: 'Home - Teslo | shop'
+  title: {
+    template: "%s - Teslo | shop",
+    default: "Home - Teslo | shop",
   },
   description: "Teslo Shop app, ecommerce for street wear and fashion",
 };
@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

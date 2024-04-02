@@ -4,10 +4,17 @@ import prisma from "../lib/prisma";
 async function main() {
   // 1. Delete existing records
   // await Promise.all([
-    await prisma.productImage.deleteMany()
-    await prisma.product.deleteMany()
-    await prisma.category.deleteMany()
+  await prisma.productImage.deleteMany();
+  await prisma.product.deleteMany();
+  await prisma.user.deleteMany();
+  await prisma.category.deleteMany();
   // ]);
+
+  // 0. Users
+
+  await prisma.user.createMany({
+    data: initialData.users,
+  });
 
   // 2. Category
 
@@ -36,19 +43,17 @@ async function main() {
       data: { ...rest, categoryId: categoriesMap[type] },
     });
 
-    const imagesData = images.map(image => ({
-      url:image,
-      productId: dbProduct.id
+    const imagesData = images.map((image) => ({
+      url: image,
+      productId: dbProduct.id,
     }));
 
     await prisma.productImage.createMany({
-      data:imagesData
-    })
+      data: imagesData,
+    });
   });
 
-    // 4. Images
-
-    
+  // 4. Images
 
   console.log("Seed successfully executed!");
 }
