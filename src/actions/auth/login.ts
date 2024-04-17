@@ -13,7 +13,7 @@ export async function authenticate(
   try {
     // sleep(4)
     await signIn("credentials", {
-      redirect: true,
+      redirect: false,
       ...Object.fromEntries(formData),
     });
 

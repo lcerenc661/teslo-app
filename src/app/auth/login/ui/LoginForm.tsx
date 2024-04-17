@@ -3,21 +3,21 @@
 import { authenticate } from "@/actions";
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { IoInformationOutline } from "react-icons/io5";
 
 export const LoginForm = () => {
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
-  console.log(errorMessage);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
     if (errorMessage === "Success") {
-      router.push("/");
+      // router.push("/");
+      window.location.replace('/');
     }
-  }, [errorMessage, router]);
+  }, [errorMessage]);
 
   return (
     <>
