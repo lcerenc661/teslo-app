@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { authenticate } from "@/actions";
 import clsx from "clsx";
