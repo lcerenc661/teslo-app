@@ -18,4 +18,10 @@ export * from "./product/slideshow/ProductMobileSlideshow";
 export * from "./product/stock-label/StockLabel";
 
 //PROVIDERS
-export * from "./provider/Provider";
+export * from "./providers/Providers";
+
+//PayPal
+export * from "./paypal/PayPalButton";
+
+// ORDERS
+export * from "./orders/OrderStatus";

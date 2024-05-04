@@ -1,5 +1,5 @@
 import { auth } from '@/auth.config';
-import CheckOut from './page';
+import CheckOut from './(checkout)/page';
 import { redirect } from 'next/navigation';
 
 export default async function CheckOutLayout({

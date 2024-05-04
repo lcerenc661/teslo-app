@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { date } from "zod";
 
 interface Props {
   countries: Country[];
@@ -58,9 +57,8 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
   }, [address]);
 
   const onSubmit = (data: FormInputs) => {
-    console.log(data);
-    setAddress(data);
     const { rememberAddress, ...restAddress } = data;
+    setAddress(restAddress);
 
     if (rememberAddress) {
       setUserAddress(data, session!.user.id);
