@@ -16,7 +16,7 @@ export * from "./product/quantity-selector/QuantitySelector";
 export * from "./product/slideshow/ProductSlideshow";
 export * from "./product/slideshow/ProductMobileSlideshow";
 export * from "./product/stock-label/StockLabel";
-
+export * from "./product/product-image/ProductImage";
 //PROVIDERS
 export * from "./providers/Providers";
 

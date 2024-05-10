@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 import "./styles.css";
+import { ProductImage } from "../product-image/ProductImage";
 
 interface Props {
   images: string[];
@@ -25,7 +26,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
   return (
     <div className={` ${className} 2xl:max-w-[900px] 2xl:self-center max-w-`}>
       <Swiper
-      id="keep-ratio"
+        id="keep-ratio"
         style={
           {
             "--swiper-navigation-color": "#fff",
@@ -36,14 +37,15 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2">
+        className="mySwiper2"
+      >
         {images.map((image) => (
           <SwiperSlide key={image}>
-            <Image
-              src={`/products/${image}`}
+            <ProductImage
+              src={image}
               alt={title}
-              width={ 1080 }
-              height={ 800 }
+              width={1080}
+              height={800}
               className="rounded-lg object-fill"
             />
           </SwiperSlide>
@@ -56,15 +58,11 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper">
+        className="mySwiper"
+      >
         {images.map((image) => (
           <SwiperSlide key={image}>
-            <Image
-              src={`/products/${image}`}
-              alt={title}
-              width={500}
-              height={500}
-            />
+            <ProductImage src={image} alt={title} width={500} height={500} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,9 +1,12 @@
-import { setTransactionId } from "./payments/set-transaction-id";
-import { paypalCheckPayment } from "./payments/paypal-payment";
+import { deleteProductImage } from './products/delete-product-image';
+
 // PRODUCTS
+
 export { getPaginatedProductsWithImages } from "./products/product-pagination";
 export { getProductBySlug } from "./products/get-product-by-slug";
 export { getStockBySlug } from "./products/get-stock-by-slug";
+export { createUpdateProducts } from "./products/create-update-products";
+export { deleteProductImage } from "./products/delete-product-image";
 
 // AUTHENTICATION
 
@@ -23,8 +26,17 @@ export { getUserAddress } from "./address/get-user-address";
 export { placeOrder } from "./order/place-order";
 export { getOrderById } from "./order/get-order-by-id";
 export { gerOrdersByUser } from "./order/get-orders-by-user";
+export { getPaginatedOrders } from "./order/get-paginated-orders";
 
 // PAYMENTS
 
 export { setTransactionId } from "./payments/set-transaction-id";
 export { paypalCheckPayment } from "./payments/paypal-payment";
+
+// USERS
+
+export { ChangeUserRole } from "./users/change-user-role";
+
+// CATEGORIES
+
+export { getCategories } from "./category/get-categories";
