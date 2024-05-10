@@ -66,7 +66,6 @@ export const createUpdateProducts = async (formData: FormData) => {
           },
         });
 
-        console.log({ updatedProduct: product });
       } else {
         // Create
 

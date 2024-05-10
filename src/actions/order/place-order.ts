@@ -114,7 +114,6 @@ export const placeOrder = async (
       // 3. Create Order's Address
 
       const { country, userId: user, id, ...restAddress } = address as any;
-      console.log({ restAddress });
       const orderAddress = await tx.orderAddress.create({
         data: {
           ...restAddress,

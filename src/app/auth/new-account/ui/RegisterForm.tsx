@@ -30,7 +30,6 @@ export const RegisterForm = () => {
     await login(email.toLowerCase(), password);
     window.location.replace('/')
 
-    console.log(response);
   };
   return (
     <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
