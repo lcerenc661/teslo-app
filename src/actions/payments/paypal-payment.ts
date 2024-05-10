@@ -8,7 +8,6 @@ import { revalidatePath } from "next/cache";
 export const paypalCheckPayment = async (paypalTransactionId: string) => {
   const authToken = await getPayPalBearerToken();
 
-  console.log({ authToken });
   if (!authToken) {
     return {
       ok: false,
@@ -36,7 +35,6 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
   }
 
   try {
-    console.log({ statues: status, purchase_units });
     const order = await prisma.order.update({
       where: { id: invoice_id },
       data: {
@@ -115,7 +113,6 @@ const verifyPayPalPayment = async (
       ...requestOptions,
       cache: "no-store",
     }).then((r) => r.json());
-    console.log({ resp });
     return resp;
   } catch (error) {
     console.log(error);
